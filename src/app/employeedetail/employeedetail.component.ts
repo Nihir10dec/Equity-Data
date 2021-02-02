@@ -26,9 +26,9 @@ export class EmployeedetailComponent implements OnInit {
       }
     } , err=>{
       console.log("inside the error block of details")
-      this.empserv.getAllEmployees().subscribe(d => this.employees = d['data']);
+      this.empserv.getAllEmployees().subscribe(d => this.employees = d['data'] , err=> this.employee = history.state.data);
       [ this.employee ]= this.employees.filter(e => e.id === empid);
-    });
+    } , );
           
   }
 

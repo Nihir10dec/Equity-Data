@@ -1,12 +1,16 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnDestroy , OnInit {
+  ngOnInit(): void {
+    localStorage.clear();
+  }
   ngOnDestroy(): void {
+    
     localStorage.removeItem('token');
   }
   title = 'equitydata';
