@@ -1,4 +1,8 @@
-<table mat-table [dataSource]="employees" class="mat-elevation-z8 table table-bordered alternate">
+<div *ngIf="employees === undefined; else elseblock">
+  <h2>Loading the employees from server.</h2>
+</div>
+
+<table #elseblock mat-table [dataSource]="employees" class="mat-elevation-z8 table table-bordered alternate">
     <tr>
     <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef> ID </th>

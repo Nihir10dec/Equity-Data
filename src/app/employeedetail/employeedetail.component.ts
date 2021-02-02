@@ -1,7 +1,7 @@
-import { Employee } from './../employees/employees.component';
-import { HttpClient } from '@angular/common/http';
+import { EmployeeService } from './../employee.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Employee } from '../employee.service';
 
 @Component({
   selector: 'app-employeedetail',
@@ -11,16 +11,25 @@ import { ActivatedRoute } from '@angular/router';
 export class EmployeedetailComponent implements OnInit {
 
   employee : Employee;
+  employees : Employee[];
 
-  constructor(private _activatedRoute: ActivatedRoute , private Http : HttpClient) { }
+  constructor(private _activatedRoute: ActivatedRoute , private empserv : EmployeeService ) { }
 
-  async ngOnInit() {
+   ngOnInit() {
     let id: string = this._activatedRoute.snapshot.params['id'];
-    // console.log("http://dummy.restapiexample.com/api/v1/employee/" + id);
-    // let empid : number = parseInt(id);
-    let obj = await this.Http.get("http://dummy.restapiexample.com/api/v1/employee/" + id).toPromise();
-    this.employee = obj['data'];
-    // console.log(this.employee);
+    let empid : number = parseInt(id);
+    
+    this.empserv.getEmpById(empid).subscribe(data => {
+      console.log(data)
+      if(data['status'] === 'success'){
+        this.employee = data['data']
+      }
+    } , err=>{
+      console.log("inside the error block of details")
+      this.empserv.getAllEmployees().subscribe(d => this.employees = d['data']);
+      [ this.employee ]= this.employees.filter(e => e.id === empid);
+    });
+          
   }
 
 }
