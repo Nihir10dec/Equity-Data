@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+}
+
+th {
+ background-color: white;
+}
+tr:nth-child(odd){
+  background-color: #CCC;
+  color: black;
+}

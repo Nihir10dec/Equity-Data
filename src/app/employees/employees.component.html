@@ -1,0 +1,38 @@
+<table mat-table [dataSource]="employees" class="mat-elevation-z8 table table-bordered alternate">
+    <tr>
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell appHighlight *matCellDef="let element"> {{element.employee_name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Salary">
+      <th mat-header-cell *matHeaderCellDef> Salary in $ </th>
+      <td mat-cell *matCellDef="let element"> {{element.employee_salary | currency:'USD'}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.employee_age | age}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Image">
+        <th mat-header-cell *matHeaderCellDef> Image </th>
+        <td mat-cell *matCellDef="let element"> {{element.profile_image}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Details">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let element"> <a class="btn btn-primary" [routerLink]="['/employee' , element.id]"  >Details</a> </td>
+    </ng-container>
+    </tr> 
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  

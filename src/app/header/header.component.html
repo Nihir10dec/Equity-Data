@@ -1,0 +1,20 @@
+<mat-drawer-container>
+    <mat-drawer #drawer mode="side" opened>
+      <h1>Equity Data Science</h1>
+      <mat-list role="list" class="side-bar">
+        <mat-list-item role="listitem">Link 1</mat-list-item>
+        <mat-list-item role="listitem">Link 2</mat-list-item>
+        <mat-list-item role="listitem">Link 3</mat-list-item>
+        <mat-list-item role="listitem">Link 1</mat-list-item>
+        <mat-list-item role="listitem">Link 2</mat-list-item>
+        <mat-list-item role="listitem">Link 3</mat-list-item>
+      </mat-list>
+    </mat-drawer>
+  
+    <mat-drawer-content>
+      <div class="right-side">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="drawer.toggle()">reorder</mat-icon>
+        <h1>Equity Data Science</h1>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>

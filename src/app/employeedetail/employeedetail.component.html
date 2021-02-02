@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+<mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{employee.employee_name | uppercase}}</mat-card-title>
+    <mat-card-subtitle>Designation</mat-card-subtitle>
+</mat-card-header>
+<img mat-card-image src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png" [alt]="employee.employee_name">
+<mat-card-content>
+    <div class="list-group list-group-flush">
+    
+        <a href="#" class="list-group-item list-group-item-action"><b>Employee ID : -</b> {{employee.id}}</a>
+        <a href="#" class="list-group-item list-group-item-action"><b>Salary :-</b> {{employee.employee_salary | currency:'USD'}} </a>
+        <a href="#" class="list-group-item list-group-item-action"><b>Age :-</b> {{employee.employee_age | age}} </a>
+        
+        </div>
+</mat-card-content>
+
+</mat-card>
+  
